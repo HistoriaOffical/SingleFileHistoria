@@ -1,8 +1,9 @@
-# SingleFile
+# SingleFile for Historia Web Interface
 
 SingleFile is a Web Extension (and a CLI tool) compatible with Chrome, Firefox
 (Desktop and Mobile), Microsoft Edge, Vivaldi, Brave, Waterfox, Yandex browser,
-and Opera. It helps you to save a complete web page into a single HTML file.
+and Opera. It helps you to save a complete web page into a single HTML file and 
+saves it to the Historia Local Web Application.
 
 ## Table of Contents
 
@@ -33,75 +34,32 @@ https://user-images.githubusercontent.com/396787/156664907-cc458e35-f41b-45ca-91
 
 SingleFile can be installed on:
 
-- Firefox: https://addons.mozilla.org/firefox/addon/single-file
-- Chrome:
-  https://chrome.google.com/extensions/detail/mpiodijhokgodhhofbcjdecpffjipkle
-- Microsoft Edge:
-  https://microsoftedge.microsoft.com/addons/detail/efnbkdcfmcmnhlkaijjjmhjjgladedno
-- Firefox for Android Nightly by following this procedure:
-  https://blog.mozilla.org/addons/2020/09/29/expanded-extension-support-in-firefox-for-android-nightly/
+- Firefox: Coming Soon
+- Chrome: Coming Soon
+- Microsoft Edge: Coming Soon
 
 You can also download the zip file
-(https://github.com/gildas-lormeau/SingleFile/archive/master.zip) of the project
+(https://github.com/HistoriaOffical/SingleFile/edit/master.zip) of the project
 and install it manually by unzipping it somewhere on your disk and following
 these instructions:
 
 - Firefox:
   https://extensionworkshop.com/documentation/develop/temporary-installation-in-firefox/
-- Chrome: https://developer.chrome.com/docs/extensions/mv3/getstarted/#unpacked
-  (omit the manifest creation)
+- Chrome: https://developer.chrome.com/docs/extensions/mv3/getstarted/#unpacked (omit the
+  manifest creation)
 - Microsoft Edge:
   https://docs.microsoft.com/en-us/microsoft-edge/extensions-chromium/getting-started/extension-sideloading
 
 ## Getting started
 
 - Wait until the page is fully loaded.
-- Click on the SingleFile button in the extension toolbar to save the page.
+- Click on the Historia SingleFile button in the extension toolbar to save the page to the Historia Local Web Application
 - You can click again on the button to cancel the action when processing a page.
-
-## Additional notes
-
-- Open the context menu by right-clicking the SingleFile button in the extension
-  toolbar or on the webpage. It allows you to save:
-  - the current tab,
-  - the selected content,
-  - the selected frame.
-- You can also process multiple tabs in one click and save:
-  - the selected tabs,
-  - the unpinned tabs,
-  - all the tabs.
-- Select "Annotate and save the page..." in the context menu to:
-  - highlight text,
-  - add notes,
-  - remove content.
-- The context menu also allows you to activate the auto-save of:
-  - the current tab,
-  - the unpinned tabs,
-  - all the tabs.
-- With auto-save active, pages are automatically saved every time after being
-  loaded (or before being unloaded if not).
-- Right-click on the SingleFile button and select "Manage extension" (Firefox) /
-  "Options" (Chrome) to open the options page.
-- Enable the option "Destination > save to Google Drive" or "Destination >
-  upload to GitHub" to upload pages to Google Drive or GitHub respectively.
-- Enable the option "Misc. > add proof of existence" to prove the existence of
-  saved pages by linking the SHA256 of the pages into the blockchain.
-- You can use the customizable shortkey Ctrl+Shift+Y to save the current tab or
-  the selected tabs. Go to about:addons and select "Manage extension shortcuts"
-  in the cogwheel menu to change it in Firefox. Go to
-  chrome://extensions/shortcuts to change it in Chrome.
-- The default save folder is the download folder configured in your browser, cf.
-  about:addons in Firefox and chrome://settings in Chrome.
-- See the extension help in the options page for more detailed information about
-  the options and technical notes.
 
 ## FAQ
 
 See https://github.com/gildas-lormeau/SingleFile/blob/master/faq.md
 
-## Release notes
-
-See https://addons.mozilla.org/firefox/addon/single-file/versions/
 
 ## Known Issues
 
@@ -162,42 +120,7 @@ Please follow these steps if you find an unknown issue:
   extensions to see if there is a conflict.
 - If there is a conflict then try to determine against which extension(s).
 - Please report the issue with a short description on how to reproduce it here:
-  https://github.com/gildas-lormeau/SingleFile/issues.
-
-## Command Line Interface
-
-You can save web pages to HTML from the command line interface. See here for
-more info: https://github.com/gildas-lormeau/single-file-cli.
-
-## Integration with user scripts
-
-You can execute a user script just before (and after) SingleFile saves a page.
-For more info, see
-https://github.com/gildas-lormeau/SingleFile/wiki/How-to-execute-a-user-script-before-a-page-is-saved.
-
-## SingleFileZ
-
-SingleFileZ is a fork of SingleFile that allows you to save a webpage as a
-self-extracting HTML file. This HTML file is also a valid ZIP file which
-contains the resources (images, fonts, stylesheets and frames) of the saved
-page. This ZIP file can be unzipped on the filesystem in order, for example, to
-view the page in a browser that would not support pages saved with SingleFileZ.
-
-More info here: https://github.com/gildas-lormeau/SingleFileZ
-
-## File format comparison
-
-|   	                                                                          | HTML (SingleFile)  | HTML (SingleFileZ) | MAFF  | MHTML | Webarchive (Safari) | HTML+folder |
-| ---                                	                                          |       :---:        |       :---:        | :---: | :---: |         :---:       |    :---:    |
-| Pages are saved as a single file                                              | ✓ 	               | ✓ 	                | ✓     | ✓     | ✓                   |             | 
-| HTML and styles are minified                                                  | ✓                  | ✓ 	                |       |       |   	                |             |
-| Unused HTML and styles are removed from files                                 | ✓                  | ✓ 	                |       |       |                     |   	        |
-| Binary resources are not encoded in base 64                                   |                    | ✓ 	                | ✓     |       | ✓                   | ✓ 	        |
-| Files are compressed                                                          |                    | ✓ 	                | ✓     |       |                     |   	        |
-| Files can be viewed without installing any extension                          | ✓                  | ✓¹                 |       | ✓²    | ✓³                  | ✓           |
-| Files can be viewed without running JavaScript                                | ✓                  |         	          | ✓     | ✓     | ✓                   | ✓ 	        |
-| Files can be unzipped to extract resources and view pages                     |                    | ✓ 	                | ✓     |       |                     | n/a         |
-| Files contains the text of the page (plain or formatted) which can be indexed | ✓ 	               | ✓⁴                 |       | ✓     | ✓ 	                | ✓ 	        |
+  https://github.com/HistoriaOffical/SingleFile/issues.
 
 Footnotes:
 
@@ -210,23 +133,9 @@ an option must be enabled in Safari.
 
 ⁴ An option must be enabled in the extension.
 
-## Projects using SingleFile
-
-- ArchiveBox - Open-source self-hosted web archiving:
-  https://github.com/ArchiveBox/ArchiveBox
-- htmls-to-datasette - Tool to index HTML files into a Sqlite database:
-  https://github.com/pjamar/htmls-to-datasette
-- singlefile2trilium - Tool to save faithful copy of a web page as a Trilium
-  note with SingleFile: https://github.com/nil0x42/singlefile2trilium
-- SingleFileMacOS - Integration of SingleFile in a swift application using
-  webkit: https://github.com/captaindavepdx/SingleFileMacOS
-- Zotero Connector - Browser extension for Zotero, a tool to help you collect,
-  organize, cite, and share your research sources:
-  https://github.com/zotero/zotero-connectors
-
 ## Privacy Policy
 
-See https://github.com/gildas-lormeau/SingleFile/blob/master/privacy.md
+See https://github.com/HistoriaOffical/SingleFile/blob/master/privacy.md
 
 ## Contributors
 

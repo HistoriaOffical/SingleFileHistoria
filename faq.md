@@ -7,7 +7,7 @@ As stated in the [privacy policy](https://github.com/gildas-lormeau/SingleFile/b
 For security purposes, browsers block web extensions on certain domains. This prevents a malicious extension to remove or change bad reviews, for example.
 
 ## Why don't interactive elements like folding titles, dynamic maps or carousels work properly in saved pages?
-These elements need JavaScript to work properly. By default, SingleFile removes scripts because they can alter the rendering and there is no guarantee they will work offline. However, you can save them by unchecking the option "Network > blocked resources > scripts", unchecking "HTML Content > remove hidden elements" and optionally checking the option "HTML content > save raw page".
+These elements need JavaScript to work properly. By default, SingleFile removes scripts because they can alter the rendering and there is no guarantee they will work offline. However, you can save them by unchecking the option "Network > blocked resources > scripts", unchecking "HTML Content > remove hidden elements" and optionally checking the option "Misc. > save raw page".
 
 ## Why isn't the infobar displayed / Why cannot I save a page from the filesystem in Chrome?
 By default, Chrome extensions are not allowed to access to pages stored on the filesystem. Therefore, you must enable the option "Allow access to file URLs" in the extension page to display the infobar when viewing a saved page, or to save a page stored on the filesystem.
@@ -20,7 +20,7 @@ The permissions requested by SingleFile are defined in the [manifest.json](https
  - `tabs` (all_urls): allows SingleFile to inject the code needed to process a page in any tab. This permission is needed for saving several tabs in one click, for example.
  - `downloads`: allows SingleFile to save pages as if they were downloaded from the web.
  - `clipboardWrite`: allows SingleFile to copy the content of a page into the clipboard instead of saving it.
- - 'nativeMessaging': allows you to use [SingleFile Companion](https://github.com/gildas-lormeau/single-file-companion) to save pages.
+ - 'nativeMessaging': allows you to use [SingleFile companion](https://github.com/gildas-lormeau/SingleFile/tree/master/companion) to save pages.
 
 ## SingleFile is slow on my computer/tablet/phone, can it run faster?
 The default configuration of SingleFile is optimized to produce small pages. This can sometimes slow down the save process considerably. Below are the options you can disable to save time and CPU.
