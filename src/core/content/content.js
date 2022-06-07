@@ -91,10 +91,22 @@ async function savePage(message) {
 			try {
 				const pageData = await processPage(options);
 				if (pageData) {
-					if (((!options.backgroundSave && !options.saveToClipboard) || options.saveToGDrive || options.saveToGitHub || options.saveWithCompanion) && options.confirmFilename) {
-						pageData.filename = ui.prompt("Save as", pageData.filename) || pageData.filename;
-					}
+					//if (((!options.backgroundSave && !options.saveToClipboard) || options.saveToGDrive || options.saveToGitHub || options.saveWithCompanion) && options.confirmFilename) {
+					//	pageData.filename = ui.prompt("Save as", pageData.filename) || pageData.filename;
+					//}
 					await download.downloadPage(pageData, options);
+					console.log('pageData', pageData);
+					await window.fetch('https://localhost:44322/Create/Create/ArchiveImport', {
+						method: 'post', // or 'PUT'
+						headers: {
+							'Content-Type': 'application/json',
+						},						
+						body: JSON.stringify(pageData),
+					})
+					.catch((error) => {
+						console.error('Error:', error);
+						alert("Can't connect to Historia Local, Are you sure it's running?")
+					});
 				}
 			} catch (error) {
 				if (!processor.cancelled) {

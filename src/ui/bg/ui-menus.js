@@ -33,6 +33,8 @@ import * as button from "./ui-button.js";
 const menus = browser.menus;
 const BROWSER_MENUS_API_SUPPORTED = menus && menus.onClicked && menus.create && menus.update && menus.removeAll;
 const MENU_ID_SAVE_PAGE = "save-page";
+const MENU_ID_SAVE_PAGE_TO_HISTORIA = "save-page-to-historia";
+const MENU_ID_SAVE_PAGE_TO_HISTORIA_NETWORK = "save-page-to-historia-network";
 const MENU_ID_EDIT_AND_SAVE_PAGE = "edit-and-save-page";
 const MENU_ID_SAVE_WITH_PROFILE = "save-with-profile";
 const MENU_ID_SAVE_SELECTED_LINKS = "save-selected-links";
@@ -60,6 +62,7 @@ const MENU_ID_AUTO_SAVE_ALL = "auto-save-all";
 const MENU_CREATE_DOMAIN_RULE_MESSAGE = browser.i18n.getMessage("menuCreateDomainRule");
 const MENU_UPDATE_RULE_MESSAGE = browser.i18n.getMessage("menuUpdateRule");
 const MENU_SAVE_PAGE_MESSAGE = browser.i18n.getMessage("menuSavePage");
+const MENU_SAVE_PAGE_TO_HISTORIA_MESSAGE = browser.i18n.getMessage("menuSavePageToHistoria");
 const MENU_SAVE_WITH_PROFILE = browser.i18n.getMessage("menuSaveWithProfile");
 const MENU_SAVE_SELECTED_LINKS = browser.i18n.getMessage("menuSaveSelectedLinks");
 const MENU_EDIT_PAGE_MESSAGE = browser.i18n.getMessage("menuEditPage");
@@ -140,245 +143,9 @@ async function createMenus(tab) {
 		const defaultContextsEnabled = defaultContextsDisabled.concat(...pageContextsEnabled);
 		const defaultContexts = options.contextMenuEnabled ? defaultContextsEnabled : defaultContextsDisabled;
 		menus.create({
-			id: MENU_ID_SAVE_PAGE,
+			id: MENU_ID_SAVE_PAGE_TO_HISTORIA,
 			contexts: defaultContexts,
-			title: MENU_SAVE_PAGE_MESSAGE
-		});
-		menus.create({
-			id: MENU_ID_EDIT_AND_SAVE_PAGE,
-			contexts: defaultContexts,
-			title: MENU_EDIT_AND_SAVE_PAGE_MESSAGE
-		});
-		menus.create({
-			id: MENU_ID_SAVE_SELECTED_LINKS,
-			contexts: options.contextMenuEnabled ? defaultContextsDisabled.concat(["selection"]) : defaultContextsDisabled,
-			title: MENU_SAVE_SELECTED_LINKS
-		});
-		if (Object.keys(profiles).length > 1) {
-			menus.create({
-				id: MENU_ID_SAVE_WITH_PROFILE,
-				contexts: defaultContexts,
-				title: MENU_SAVE_WITH_PROFILE
-			});
-		}
-		if (options.contextMenuEnabled) {
-			menus.create({
-				id: "separator-1",
-				contexts: pageContextsEnabled,
-				type: "separator"
-			});
-		}
-		menus.create({
-			id: MENU_ID_SAVE_SELECTED,
-			contexts: defaultContexts,
-			title: MENU_SAVE_SELECTION_MESSAGE
-		});
-		if (options.contextMenuEnabled) {
-			menus.create({
-				id: MENU_ID_SAVE_FRAME,
-				contexts: ["frame"],
-				title: MENU_SAVE_FRAME_MESSAGE
-			});
-		}
-		menus.create({
-			id: MENU_ID_SAVE_TABS,
-			contexts: defaultContextsDisabled,
-			title: MENU_SAVE_TABS_MESSAGE
-		});
-		menus.create({
-			id: MENU_ID_BUTTON_SAVE_SELECTED_TABS,
-			contexts: defaultContextsDisabled,
-			title: MENU_SAVE_SELECTED_TABS_MESSAGE,
-			parentId: MENU_ID_SAVE_TABS
-		});
-		menus.create({
-			id: MENU_ID_BUTTON_SAVE_UNPINNED_TABS,
-			contexts: defaultContextsDisabled,
-			title: MENU_SAVE_UNPINNED_TABS_MESSAGE,
-			parentId: MENU_ID_SAVE_TABS
-		});
-		menus.create({
-			id: MENU_ID_BUTTON_SAVE_ALL_TABS,
-			contexts: defaultContextsDisabled,
-			title: MENU_SAVE_ALL_TABS_MESSAGE,
-			parentId: MENU_ID_SAVE_TABS
-		});
-		if (options.contextMenuEnabled) {
-			menus.create({
-				id: MENU_ID_SAVE_SELECTED_TABS,
-				contexts: pageContextsEnabled,
-				title: MENU_SAVE_SELECTED_TABS_MESSAGE
-			});
-			menus.create({
-				id: MENU_ID_SAVE_UNPINNED_TABS,
-				contexts: pageContextsEnabled,
-				title: MENU_SAVE_UNPINNED_TABS_MESSAGE
-			});
-			menus.create({
-				id: MENU_ID_SAVE_ALL_TABS,
-				contexts: pageContextsEnabled,
-				title: MENU_SAVE_ALL_TABS_MESSAGE
-			});
-			menus.create({
-				id: "separator-2",
-				contexts: pageContextsEnabled,
-				type: "separator"
-			});
-		}
-		if (Object.keys(profiles).length > 1) {
-			menus.create({
-				id: MENU_ID_SELECT_PROFILE,
-				title: MENU_SELECT_PROFILE_MESSAGE,
-				contexts: defaultContexts,
-			});
-			menus.create({
-				id: MENU_ID_SAVE_WITH_PROFILE_PREFIX + "default",
-				contexts: defaultContexts,
-				title: PROFILE_DEFAULT_SETTINGS_MESSAGE,
-				parentId: MENU_ID_SAVE_WITH_PROFILE
-			});
-			const defaultProfileId = MENU_ID_SELECT_PROFILE_PREFIX + "default";
-			const defaultProfileChecked = !allTabsData.profileName || allTabsData.profileName == config.DEFAULT_PROFILE_NAME;
-			menus.create({
-				id: defaultProfileId,
-				type: "radio",
-				contexts: defaultContexts,
-				title: PROFILE_DEFAULT_SETTINGS_MESSAGE,
-				checked: defaultProfileChecked,
-				parentId: MENU_ID_SELECT_PROFILE
-			});
-			menusCheckedState.set(defaultProfileId, defaultProfileChecked);
-			menus.create({
-				id: MENU_ID_ASSOCIATE_WITH_PROFILE,
-				title: MENU_CREATE_DOMAIN_RULE_MESSAGE,
-				contexts: defaultContexts,
-			});
-			menusTitleState.set(MENU_ID_ASSOCIATE_WITH_PROFILE, MENU_CREATE_DOMAIN_RULE_MESSAGE);
-			let rule;
-			if (tab && tab.url) {
-				rule = await config.getRule(tab.url, true);
-			}
-			const currentProfileId = MENU_ID_ASSOCIATE_WITH_PROFILE_PREFIX + "current";
-			const currentProfileChecked = !rule || (rule.profile == config.CURRENT_PROFILE_NAME);
-			menus.create({
-				id: currentProfileId,
-				type: "radio",
-				contexts: defaultContexts,
-				title: config.CURRENT_PROFILE_NAME,
-				checked: currentProfileChecked,
-				parentId: MENU_ID_ASSOCIATE_WITH_PROFILE
-			});
-			menusCheckedState.set(currentProfileId, currentProfileChecked);
-
-			const associatedDefaultProfileId = MENU_ID_ASSOCIATE_WITH_PROFILE_PREFIX + "default";
-			const associatedDefaultProfileChecked = Boolean(rule) && (rule.profile == config.DEFAULT_PROFILE_NAME);
-			menus.create({
-				id: associatedDefaultProfileId,
-				type: "radio",
-				contexts: defaultContexts,
-				title: PROFILE_DEFAULT_SETTINGS_MESSAGE,
-				checked: associatedDefaultProfileChecked,
-				parentId: MENU_ID_ASSOCIATE_WITH_PROFILE
-			});
-			menusCheckedState.set(associatedDefaultProfileId, associatedDefaultProfileChecked);
-			profileIndexes = new Map();
-			Object.keys(profiles).forEach((profileName, profileIndex) => {
-				if (profileName != config.DEFAULT_PROFILE_NAME) {
-					let profileId = MENU_ID_SAVE_WITH_PROFILE_PREFIX + profileIndex;
-					menus.create({
-						id: profileId,
-						contexts: defaultContexts,
-						title: profileName,
-						parentId: MENU_ID_SAVE_WITH_PROFILE
-					});
-					profileId = MENU_ID_SELECT_PROFILE_PREFIX + profileIndex;
-					let profileChecked = allTabsData.profileName == profileName;
-					menus.create({
-						id: profileId,
-						type: "radio",
-						contexts: defaultContexts,
-						title: profileName,
-						checked: profileChecked,
-						parentId: MENU_ID_SELECT_PROFILE
-					});
-					menusCheckedState.set(profileId, profileChecked);
-					profileId = MENU_ID_ASSOCIATE_WITH_PROFILE_PREFIX + profileIndex;
-					profileChecked = Boolean(rule) && rule.profile == profileName;
-					menus.create({
-						id: profileId,
-						type: "radio",
-						contexts: defaultContexts,
-						title: profileName,
-						checked: profileChecked,
-						parentId: MENU_ID_ASSOCIATE_WITH_PROFILE
-					});
-					menusCheckedState.set(profileId, profileChecked);
-					profileIndexes.set(profileName, profileIndex);
-				}
-			});
-			if (options.contextMenuEnabled) {
-				menus.create({
-					id: "separator-3",
-					contexts: pageContextsEnabled,
-					type: "separator"
-				});
-			}
-		}
-		menus.create({
-			id: MENU_ID_AUTO_SAVE,
-			contexts: defaultContexts,
-			title: MENU_AUTOSAVE_MESSAGE
-		});
-		menus.create({
-			id: MENU_ID_AUTO_SAVE_DISABLED,
-			type: "radio",
-			title: MENU_AUTOSAVE_DISABLED_MESSAGE,
-			contexts: defaultContexts,
-			checked: true,
-			parentId: MENU_ID_AUTO_SAVE
-		});
-		menusCheckedState.set(MENU_ID_AUTO_SAVE_DISABLED, true);
-		menus.create({
-			id: MENU_ID_AUTO_SAVE_TAB,
-			type: "radio",
-			title: MENU_AUTOSAVE_TAB_MESSAGE,
-			contexts: defaultContexts,
-			checked: false,
-			parentId: MENU_ID_AUTO_SAVE
-		});
-		menusCheckedState.set(MENU_ID_AUTO_SAVE_TAB, false);
-		menus.create({
-			id: MENU_ID_AUTO_SAVE_UNPINNED,
-			type: "radio",
-			title: MENU_AUTOSAVE_UNPINNED_TABS_MESSAGE,
-			contexts: defaultContexts,
-			checked: false,
-			parentId: MENU_ID_AUTO_SAVE
-		});
-		menusCheckedState.set(MENU_ID_AUTO_SAVE_UNPINNED, false);
-		menus.create({
-			id: MENU_ID_AUTO_SAVE_ALL,
-			type: "radio",
-			title: MENU_AUTOSAVE_ALL_TABS_MESSAGE,
-			contexts: defaultContexts,
-			checked: false,
-			parentId: MENU_ID_AUTO_SAVE
-		});
-		menusCheckedState.set(MENU_ID_AUTO_SAVE_ALL, false);
-		menus.create({
-			id: "separator-4",
-			contexts: defaultContexts,
-			type: "separator"
-		});
-		menus.create({
-			id: MENU_ID_BATCH_SAVE_URLS,
-			contexts: defaultContexts,
-			title: MENU_BATCH_SAVE_URLS_MESSAGE
-		});
-		menus.create({
-			id: MENU_ID_VIEW_PENDINGS,
-			contexts: defaultContexts,
-			title: MENU_VIEW_PENDINGS_MESSAGE
+			title: MENU_SAVE_PAGE_TO_HISTORIA_MESSAGE
 		});
 	}
 	menusCreated = true;
@@ -396,18 +163,38 @@ async function initialize() {
 				if (event.linkUrl) {
 					business.saveUrls([event.linkUrl]);
 				} else {
-					business.saveTabs([tab]);
+					business.saveTabs([tab], true);
 				}
 			}
+			if (event.menuItemId == MENU_ID_SAVE_PAGE_TO_HISTORIA) {
+				console.log('save to historia');
+				if (event.linkUrl) {
+					console.log('save to historia event.linkUrl', event.linkUrl);
+					business.saveUrls([event.linkUrl], true);
+				} else {
+					console.log('save to historia saveTabs', tab);
+					business.saveTabs([tab], true);
+				}
+			}
+			if (event.menuItemId == MENU_ID_SAVE_PAGE_TO_HISTORIA_NETWORK) {
+				console.log('save to historia network');
+				if (event.linkUrl) {
+					console.log('save to historia event.linkUrl', event.linkUrl);
+					business.saveUrls([event.linkUrl], true);
+				} else {
+					console.log('save to historia saveTabs', tab);
+					business.saveTabs([tab], true);
+				}
+			}				
 			if (event.menuItemId == MENU_ID_EDIT_AND_SAVE_PAGE) {
 				const allTabsData = await tabsData.get(tab.id);
 				if (allTabsData[tab.id].savedPageDetected) {
 					business.openEditor(tab);
 				} else {
 					if (event.linkUrl) {
-						business.saveUrls([event.linkUrl], { openEditor: true });
+						business.saveUrls([event.linkUrl], false, { openEditor: true });
 					} else {
-						business.saveTabs([tab], { openEditor: true });
+						business.saveTabs([tab], false, { openEditor: true });
 					}
 				}
 			}
