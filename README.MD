@@ -39,7 +39,7 @@ SingleFile can be installed on:
 - Microsoft Edge: Coming Soon
 
 You can also download the zip file
-(https://github.com/HistoriaOffical/SingleFileHistoria/edit/master.zip) of the project
+https://github.com/HistoriaOffical/SingleFileHistoria/releases/download/v1.0-HLWA/SingleFileHistoria.zip of the project
 and install it manually by unzipping it somewhere on your disk and following
 these instructions:
 
