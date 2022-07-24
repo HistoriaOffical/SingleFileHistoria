@@ -89,17 +89,17 @@ async function savePage(message) {
 			}
 			processing = true;
 			try {
+				const liveSite = !options.toHistoriaLocal;
+				const url = liveSite ? 'https://historia.network/Create/Create/ArchiveImport' : 'https://localhost:44322/Create/Create/ArchiveImport';
 				const pageData = await processPage(options);
 				if (pageData) {
-					//if (((!options.backgroundSave && !options.saveToClipboard) || options.saveToGDrive || options.saveToGitHub || options.saveWithCompanion) && options.confirmFilename) {
-					//	pageData.filename = ui.prompt("Save as", pageData.filename) || pageData.filename;
-					//}
 					await download.downloadPage(pageData, options);
-					console.log('pageData', pageData);
-					await window.fetch('https://localhost:44322/Create/Create/ArchiveImport', {
+					pageData['access_token'] = options.liveSiteAccessToken; //'LF9DRTNYQyVVfUheOUdMSVV9MDRRNiYrVDZFVFgvVDBOK09UTyktNElHTTFTMSQ8KC59KnxQUVlEUV9dUypPVg==';
+					console.log('pageData', pageData, pageData['access_token']);
+					await window.fetch(url, {
 						method: 'post', // or 'PUT'
 						headers: {
-							'Content-Type': 'application/json',
+							'Content-Type': 'application/json; charset=utf-8'
 						},						
 						body: JSON.stringify(pageData),
 					})

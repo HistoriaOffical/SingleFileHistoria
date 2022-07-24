@@ -180,7 +180,7 @@
 				<input type="checkbox" id="removeAlternativeFontsInput">
 			</div>
 		</details>
-		<details style="display:none">
+		<details>
 			<summary id="destinationLabel"></summary>
 			<div class="option">
 				<label for="saveToFilesystemInput" id="saveToFilesystemLabel"></label>
@@ -304,7 +304,7 @@
 				<input type="checkbox" id="passReferrerOnErrorInput">
 			</div>
 		</details>
-		<details style="display:none">
+		<details>
 			<summary id="editorLabel"></summary>
 			<div class="option">
 				<label for="defaultEditorModeInput" id="defaultEditorModeLabel"></label>
@@ -460,16 +460,23 @@
 				<input type="checkbox" id="showAutoSaveProfileInput">
 			</div>
 		</details>
-		<div class="option bottom" style="display:none">
-			<a href="help.html" target="SingleFileHelpPage" id="helpLabel"></a>
-			<div class="buttons">
+		<details>
+			<summary id="liveSiteLabel">Live-Site</summary>
+			<div class="option">
+				<label for="liveSiteAccessTokenInput" id="liveSiteAccessTokenLabel">Access Token</label>
+				<input type="text" id="liveSiteAccessTokenInput">
+			</div>
+		</details>		
+		<div class="option bottom">
+			<a href="help.html" style="display:none" target="SingleFileHelpPage" id="helpLabel"></a>
+			<div class="buttons" style="float:right">
 				<div class="sync-input">
 					<input type="checkbox" id="synchronizeInput">
 					<label for="synchronizeInput" id="synchronizeLabel"></label>
 				</div>
-				<button id="importButton"></button>
-				<button id="exportButton"></button>
-				<button id="resetButton"></button>
+				<button style="display:none" id="importButton"></button>
+				<button style="display:none" id="exportButton"></button>
+				<button style="display:none" id="resetButton"></button>
 				<input type="file" id="fileInput" hidden>
 			</div>
 		</div>

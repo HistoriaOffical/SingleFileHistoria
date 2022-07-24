@@ -63,6 +63,7 @@ const MENU_CREATE_DOMAIN_RULE_MESSAGE = browser.i18n.getMessage("menuCreateDomai
 const MENU_UPDATE_RULE_MESSAGE = browser.i18n.getMessage("menuUpdateRule");
 const MENU_SAVE_PAGE_MESSAGE = browser.i18n.getMessage("menuSavePage");
 const MENU_SAVE_PAGE_TO_HISTORIA_MESSAGE = browser.i18n.getMessage("menuSavePageToHistoria");
+const MENU_SAVE_PAGE_TO_HISTORIA_LOCAL_MESSAGE = browser.i18n.getMessage("menuSavePageToHistoriaLocal");
 const MENU_SAVE_WITH_PROFILE = browser.i18n.getMessage("menuSaveWithProfile");
 const MENU_SAVE_SELECTED_LINKS = browser.i18n.getMessage("menuSaveSelectedLinks");
 const MENU_EDIT_PAGE_MESSAGE = browser.i18n.getMessage("menuEditPage");
@@ -143,10 +144,15 @@ async function createMenus(tab) {
 		const defaultContextsEnabled = defaultContextsDisabled.concat(...pageContextsEnabled);
 		const defaultContexts = options.contextMenuEnabled ? defaultContextsEnabled : defaultContextsDisabled;
 		menus.create({
-			id: MENU_ID_SAVE_PAGE_TO_HISTORIA,
+			id: MENU_ID_SAVE_PAGE_TO_HISTORIA_NETWORK,
 			contexts: defaultContexts,
 			title: MENU_SAVE_PAGE_TO_HISTORIA_MESSAGE
 		});
+		menus.create({
+			id: MENU_ID_SAVE_PAGE_TO_HISTORIA,
+			contexts: defaultContexts,
+			title: MENU_SAVE_PAGE_TO_HISTORIA_LOCAL_MESSAGE
+		});		
 	}
 	menusCreated = true;
 	if (pendingRefresh) {
@@ -173,7 +179,7 @@ async function initialize() {
 					business.saveUrls([event.linkUrl], true);
 				} else {
 					console.log('save to historia saveTabs', tab);
-					business.saveTabs([tab], true);
+					business.saveTabs([tab], true, true);
 				}
 			}
 			if (event.menuItemId == MENU_ID_SAVE_PAGE_TO_HISTORIA_NETWORK) {
@@ -183,7 +189,7 @@ async function initialize() {
 					business.saveUrls([event.linkUrl], true);
 				} else {
 					console.log('save to historia saveTabs', tab);
-					business.saveTabs([tab], true);
+					business.saveTabs([tab], false, true);
 				}
 			}				
 			if (event.menuItemId == MENU_ID_EDIT_AND_SAVE_PAGE) {

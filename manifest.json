@@ -1,7 +1,7 @@
 {
 	"name": "Historia Network",
-	"author": "Gildas Lormeau",
-	"homepage_url": "https://github.com/gildas-lormeau/SingleFile",
+	"author": "Historia Team",
+	"homepage_url": "https://github.com/HistoriaOffical/SingleFileHistoria",
 	"icons": {
 		"16": "src/ui/resources/icon_16.png",
 		"48": "src/ui/resources/icon_48.png",

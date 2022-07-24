@@ -86,13 +86,14 @@ async function batchSaveUrls() {
 	return browser.tabs.create({ active: true, url: "/src/ui/pages/batch-save-urls.html" });
 }
 
-async function saveUrls(urls, toHistoria = false, options = {}) {
+async function saveUrls(urls, toHistoriaLocal = false, options = {}) {
 	await initMaxParallelWorkers();
 	await Promise.all(urls.map(async url => {
+		console.log('saveUrls()', toHistoriaLocal);
 		const tabOptions = await config.getOptions(url);
 		Object.keys(options).forEach(key => tabOptions[key] = options[key]);
 		tabOptions.autoClose = true;
-		tabOptions.toHistoria = toHistoria;
+		tabOptions.toHistoriaLocal = toHistoriaLocal;
 		tabOptions.extensionScriptFiles = extensionScriptFiles;
 		if (tabOptions.passReferrerOnError) {
 			await requests.enableReferrerOnError();
@@ -107,15 +108,16 @@ async function saveUrls(urls, toHistoria = false, options = {}) {
 	runTasks();
 }
 
-async function saveTabs(tabs, toHistoria = false, options = {}) {
+async function saveTabs(tabs, toHistoriaLocal = false, options = {}) {
 	await initMaxParallelWorkers();
 	await Promise.all(tabs.map(async tab => {
+		console.log('saveTabs()', toHistoriaLocal);
 		const tabId = tab.id;
 		const tabOptions = await config.getOptions(tab.url);
 		Object.keys(options).forEach(key => tabOptions[key] = options[key]);
 		tabOptions.tabId = tabId;
 		tabOptions.tabIndex = tab.index;
-		tabOptions.toHistoria = toHistoria;
+		tabOptions.toHistoriaLocal = toHistoriaLocal;
 		tabOptions.extensionScriptFiles = extensionScriptFiles;
 		if (tabOptions.passReferrerOnError) {
 			await requests.enableReferrerOnError();

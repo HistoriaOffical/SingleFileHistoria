@@ -147,6 +147,7 @@ const fileInput = document.getElementById("fileInput");
 const profileNamesInput = document.getElementById("profileNamesInput");
 const removeHiddenElementsInput = document.getElementById("removeHiddenElementsInput");
 const removeUnusedStylesInput = document.getElementById("removeUnusedStylesInput");
+const liveSiteAccessTokenInput = document.getElementById("liveSiteAccessTokenInput");
 const removeUnusedFontsInput = document.getElementById("removeUnusedFontsInput");
 const removeFramesInput = document.getElementById("removeFramesInput");
 const removeImportsInput = document.getElementById("removeImportsInput");
@@ -745,6 +746,7 @@ async function refresh(profileName) {
 	blockFontsInput.checked = profileOptions.blockFonts;
 	blockStylesheetsInput.checked = profileOptions.blockStylesheets;
 	blockImagesInput.checked = profileOptions.blockImages;
+	liveSiteAccessTokenInput.value = profileOptions.liveSiteAccessToken;
 	acceptHeaderDocumentInput.value = profileOptions.acceptHeaders.document;
 	acceptHeaderScriptInput.value = profileOptions.acceptHeaders.script;
 	acceptHeaderAudioInput.value = profileOptions.acceptHeaders.audio;
@@ -869,6 +871,7 @@ async function update() {
 				stylesheet: acceptHeaderStylesheetInput.value,
 				image: acceptHeaderImageInput.value
 			},
+			liveSiteAccessToken: liveSiteAccessTokenInput.value,
 			saveRawPage: saveRawPageInput.checked,
 			insertMetaCSP: insertMetaCSPInput.checked,
 			saveToClipboard: saveToClipboardInput.checked,

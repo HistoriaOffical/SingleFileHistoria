@@ -16,6 +16,10 @@
 		"description": "Menu entry: 'Save page with SingleFile'"
 	},
 	"menuSavePageToHistoria": {
+		"message": "Send Page to Historia Network (Live)",
+		"description": "Menu entry: 'Send Page to Historia Network (Live)'"
+	},		
+	"menuSavePageToHistoriaLocal": {
 		"message": "Send Page to Historia Network (Local)",
 		"description": "Menu entry: 'Send Page to Historia Network (Local)'"
 	},	
@@ -363,6 +367,10 @@
 		"message": "Auto-save",
 		"description": "Options sub-title: 'Auto-save'"
 	},
+	"optionsLiveSiteTitle": {
+		"message": "Live-site",
+		"description": "Options sub-title: 'Live-site'"
+	},	
 	"optionsAutoSettingsSubTitle": {
 		"message": "Auto-settings rules",
 		"description": "Options sub-title: 'Auto-settings rules'"
