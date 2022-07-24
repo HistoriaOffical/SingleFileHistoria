@@ -39,7 +39,7 @@ SingleFile can be installed on:
 - Microsoft Edge: Coming Soon
 
 You can also download the zip file
-(https://github.com/HistoriaOffical/SingleFile/edit/master.zip) of the project
+https://github.com/HistoriaOffical/SingleFileHistoria/releases/download/v1.0-HLWA/SingleFileHistoria.zip of the project
 and install it manually by unzipping it somewhere on your disk and following
 these instructions:
 
@@ -58,7 +58,7 @@ these instructions:
 
 ## FAQ
 
-See https://github.com/gildas-lormeau/SingleFile/blob/master/faq.md
+See https://github.com/HistoriaOffical/SingleFileHistoria/blob/master/faq.md
 
 
 ## Known Issues
@@ -100,7 +100,7 @@ See https://github.com/gildas-lormeau/SingleFile/blob/master/faq.md
     [here](https://bugzilla.mozilla.org/show_bug.cgi?id=1644488). This bug has
     been closed by Mozilla as "WontFix". But there is a simple workaround
     proposed
-    [here](https://github.com/gildas-lormeau/SingleFile/issues/7#issuecomment-618980153).
+    [here](https://github.com/HistoriaOffical/SingleFileHistoria/issues/7#issuecomment-618980153).
 - Waterfox Classic
   - User interface elements displayed in the page (progress bar, logs panel)
     won't be displayed unless `dom.webcomponents.enabled` is enabled in
@@ -120,7 +120,7 @@ Please follow these steps if you find an unknown issue:
   extensions to see if there is a conflict.
 - If there is a conflict then try to determine against which extension(s).
 - Please report the issue with a short description on how to reproduce it here:
-  https://github.com/HistoriaOffical/SingleFile/issues.
+  https://github.com/HistoriaOffical/SingleFileHistoria/issues.
 
 Footnotes:
 
@@ -135,7 +135,7 @@ an option must be enabled in Safari.
 
 ## Privacy Policy
 
-See https://github.com/HistoriaOffical/SingleFile/blob/master/privacy.md
+See https://github.com/HistoriaOffical/SingleFileHistoria/blob/master/privacy.md
 
 ## Contributors
 
