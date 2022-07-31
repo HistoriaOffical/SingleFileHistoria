@@ -368,8 +368,8 @@
 		"description": "Options sub-title: 'Auto-save'"
 	},
 	"optionsLiveSiteTitle": {
-		"message": "Live-site",
-		"description": "Options sub-title: 'Live-site'"
+		"message": "Historia Network API Key",
+		"description": "Options sub-title: 'Historia Network API Key'"
 	},	
 	"optionsAutoSettingsSubTitle": {
 		"message": "Auto-settings rules",

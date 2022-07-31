@@ -94,7 +94,7 @@ async function savePage(message) {
 				const pageData = await processPage(options);
 				if (pageData) {
 					await download.downloadPage(pageData, options);
-					pageData['access_token'] = options.liveSiteAccessToken; //'LF9DRTNYQyVVfUheOUdMSVV9MDRRNiYrVDZFVFgvVDBOK09UTyktNElHTTFTMSQ8KC59KnxQUVlEUV9dUypPVg==';
+					pageData['access_token'] = options.liveSiteAccessToken;
 					console.log('pageData', pageData, pageData['access_token']);
 					await window.fetch(url, {
 						method: 'post', // or 'PUT'
@@ -105,7 +105,11 @@ async function savePage(message) {
 					})
 					.catch((error) => {
 						console.error('Error:', error);
-						alert("Can't connect to Historia Local, Are you sure it's running?")
+						if(!liveSite) {
+							alert("Can't connect to Historia Local Web Application, Are you sure it's running?")
+						} else {
+							alert("Can't submit to https://historia.network; Did you setup your API Key in both the web application and extension?")
+						}
 					});
 				}
 			} catch (error) {
