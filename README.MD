@@ -3,7 +3,8 @@
 SingleFile is a Web Extension (and a CLI tool) compatible with Chrome, Firefox
 (Desktop and Mobile), Microsoft Edge, Vivaldi, Brave, Waterfox, Yandex browser,
 and Opera. It helps you to save a complete web page into a single HTML file and 
-saves it to the Historia Local Web Application.
+saves it to either the Historia Local Web Application or the main web application 
+located at https://historia.network.
 
 ## Table of Contents
 
@@ -26,21 +27,17 @@ saves it to the Historia Local Web Application.
 - [Code derived from third party projects](#code-derived-from-third-party-projects)
 - [License](#license)
 
-## Demo
-
-https://user-images.githubusercontent.com/396787/156664907-cc458e35-f41b-45ca-91eb-372213812b44.mp4
-
 ## Install
 
-SingleFile can be installed on:
+Historia SingleFile can be manually installed on most browsers including:
 
-- Firefox: Coming Soon
-- Chrome: Coming Soon
-- Microsoft Edge: Coming Soon
+- Firefox
+- Chrome
+- Microsoft Edge
+- Other browsers
 
-You can also download the zip file
-https://github.com/HistoriaOffical/SingleFileHistoria/releases/download/v1.0-HLWA/SingleFileHistoria.zip of the project
-and install it manually by unzipping it somewhere on your disk and following
+To manually install you can download the zip file
+https://github.com/HistoriaOffical/SingleFileHistoria/releases/download/v1.1-HLWA/SingleFileHistoria-v1.1.zip of the project and install it manually by unzipping it somewhere on your disk and following
 these instructions:
 
 - Firefox:
@@ -137,50 +134,9 @@ an option must be enabled in Safari.
 
 See https://github.com/HistoriaOffical/SingleFileHistoria/blob/master/privacy.md
 
-## Contributors
-
-- Chinese translation done by yfdyh000 (https://github.com/yfdyh000),
-  KrasnayaPloshchad (https://github.com/KrasnayaPloshchad), frostblazergit
-  (https://github.com/frostblazergit), dnknn (https://github.com/dnknn),
-  lqzhgood (https://github.com/lqzhgood)
-- Traditional Chinese translation done by frostblazergit
-  (https://github.com/frostblazergit), lqzhgood (https://github.com/lqzhgood)
-- German translation done by womotroll (https://github.com/womotroll), bannmann
-  (https://github.com/bannmann)
-- Italian translation done by Fastbyte01 (https://github.com/Fastbyte01)
-- Japanese translation done by Shitennouji（四天王寺)
-  (https://github.com/Shitennouji)
-- Polish translation done by xesarni (https://github.com/xesarni)
-- Portuguese-Brazilian translation done by @mezysinc
-- Russian translation done by rstp14, kramola-RU
-  (https://github.com/kramola-RU), solokot (https://github.com/solokot),
-  TotalCaesar659 (https://github.com/TotalCaesar659)
-- Ukrainian translation done by perdolka (https://github.com/perdolka)
-- Spanish translation done by strel (https://github.com/strel)
-
-## Code derived from third party projects
-
-- csstree: https://github.com/csstree/csstree
-- postcss-media-query-parser:
-  https://github.com/dryoma/postcss-media-query-parser
-- postcss-selector-parser: https://github.com/postcss/postcss-selector-parser
-- UglifyCSS: https://github.com/fmarcia/UglifyCSS
-- parse-srcset: https://github.com/albell/parse-srcset
-- parse-css-font: https://github.com/jedmao/parse-css-font
-- Readability: https://github.com/mozilla/readability
-- whatwg-mimetype: https://github.com/jsdom/whatwg-mimetype
-
-## Icons
-
-- Icon made by [Kiranshastry](https://www.flaticon.com/authors/kiranshastry)
-  from [Flaticon](https://www.flaticon.com/) is licensed by
-  [CC 3.0 BY](http://creativecommons.org/licenses/by/3.0/)
-
 ## License
 
-SingleFile is licensed under AGPL. Code derived from third-party projects is
-licensed under MIT. Please contact me at gildas.lormeau &lt;at&gt; gmail.com if
-you are interested in licensing the SingleFile code for a commercial service or
-product.
+Historia SingleFile is licensed under AGPL. Code derived from third-party projects is
+licensed under MIT. 
 
 Suggestions are welcome :)
