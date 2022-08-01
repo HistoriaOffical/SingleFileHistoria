@@ -8,7 +8,6 @@ located at https://historia.network.
 
 ## Table of Contents
 
-- [Demo](#demo)
 - [Install](#install)
 - [Getting started](#getting-started)
 - [Additional notes](#additional-notes)
@@ -16,15 +15,7 @@ located at https://historia.network.
 - [Release notes](#release-notes)
 - [Known issues](#known-issues)
 - [Troubleshooting unknown issues](#troubleshooting-unknown-issues)
-- [Command Line Interface](#command-line-interface)
-- [Integration with user scripts](#integration-with-user-scripts)
-- [SingleFileZ](#singlefilez)
-- [File format comparison](#file-format-comparison)
-- [Projects using SingleFile](#projects-using-singlefile)
 - [Privacy policy](#privacy-policy)
-- [Contributors](#contributors)
-- [Icons](#icons)
-- [Code derived from third party projects](#code-derived-from-third-party-projects)
 - [License](#license)
 
 ## Install
