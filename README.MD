@@ -22,7 +22,7 @@ located at https://historia.network.
 
 Historia SingleFile can be manually installed on most browsers including:
 
-- Firefox
+- Firefox: https://addons.mozilla.org/en-US/firefox/addon/historia-network/
 - Chrome
 - Microsoft Edge
 - Other browsers
